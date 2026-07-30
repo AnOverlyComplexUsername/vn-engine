@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://cc5ucy03yth"]
+
+[ext_resource type="Script" uid="uid://wtqahixg26bk" path="res://Scripts/DialogueBox.gd" id="1_aop38"]
+
+[node name="DialogueBox" type="Control" unique_id=2046858654 node_paths=PackedStringArray("text_area", "name_label", "text_sfx", "speed_button", "auto_button", "hide_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_aop38")
+text_area = NodePath("Panel/MarginContainer/RichTextLabel")
+name_label = NodePath("Panel/PanelContainer/Label")
+text_sfx = NodePath("AudioStreamPlayer")
+speed_button = NodePath("Panel/HBoxContainer/SpeedButton")
+auto_button = NodePath("Panel/HBoxContainer/AutoButton")
+hide_button = NodePath("Panel/HBoxContainer/HideButton")
+
+[node name="Panel" type="Panel" parent="." unique_id=387415675]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -264.5
+offset_top = -230.0
+offset_right = 264.5
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1201470975]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 4.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 11
+
+[node name="SpeedButton" type="Button" parent="Panel/HBoxContainer" unique_id=2044205134]
+layout_mode = 2
+text = "1x speed"
+
+[node name="AutoButton" type="Button" parent="Panel/HBoxContainer" unique_id=1314459813]
+layout_mode = 2
+toggle_mode = true
+text = " Auto "
+
+[node name="HideButton" type="Button" parent="Panel/HBoxContainer" unique_id=1702775095]
+layout_mode = 2
+toggle_mode = true
+text = " Hide "
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1189896500]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer" unique_id=455963418]
+layout_mode = 2
+bbcode_enabled = true
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel" unique_id=1259567978]
+layout_mode = 0
+offset_top = -39.0
+offset_right = 75.5
+offset_bottom = 1.0
+
+[node name="Label" type="Label" parent="Panel/PanelContainer" unique_id=4191953]
+layout_mode = 2
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=208440061]
