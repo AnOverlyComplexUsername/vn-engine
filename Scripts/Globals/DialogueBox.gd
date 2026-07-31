@@ -8,6 +8,7 @@ extends Control
 @export var _hide_button: Button
 @export var _dialogue_audio: AudioStreamPlayer
 @export var _choice_container: VBoxContainer
+@export var _skip_button: Button
 
 ##speed of dialogue playback
 var speedScale : int = 1 
@@ -19,13 +20,15 @@ var _currentChoices : Array[ChoiceButton]
 
 signal line_finished
 signal choice_picked(id : String)
+signal skip_scene 
 
 #region Default Functions
-func _ready() -> void:
-	#self.hide()
+func _enter_tree() -> void:
 	_speed_button.pressed.connect(next_switch_speed)
 	_auto_button.pressed.connect(toggle_auto)
 	_hide_button.pressed.connect(hide_dialogue_ui)
+	_skip_button.pressed.connect(skip_scene.emit)
+	
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel") and self.visible == false:
@@ -157,21 +160,21 @@ func play_audio(audio : AudioStream) -> Signal:
 	return _dialogue_audio.finished
 
 #region Dialogue box transitions
-func fade_out(lengthSeconds : float = 1) -> Signal:
+func fade_out(lengthSeconds : float = 1, _ease : Tween.EaseType = Tween.EaseType.EASE_IN_OUT) -> Signal:
 	self.modulate.a = 1
 	self.show()
 	var tween : Tween = get_tree().create_tween()
 	
-	tween.tween_property(self, "modulate:a", 0, lengthSeconds)
+	tween.tween_property(self, "modulate:a", 0, lengthSeconds).set_ease(_ease)
 	
 	return tween.finished
 
-func fade_in(lengthSeconds : float = 1) -> Signal:
+func fade_in(lengthSeconds : float = 1, _ease : Tween.EaseType = Tween.EaseType.EASE_IN_OUT) -> Signal:
 	self.modulate.a = 0
 	self.show()
 	var tween : Tween = get_tree().create_tween()
 	
-	tween.tween_property(self, "modulate:a", 1, lengthSeconds)
+	tween.tween_property(self, "modulate:a", 1, lengthSeconds).set_ease(_ease)
 	
 	return tween.finished
 #endregion

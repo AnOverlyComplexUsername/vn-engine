@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://wtqahixg26bk" path="res://Scripts/Globals/DialogueBox.gd" id="1_aop38"]
 
-[node name="DialogueBox" type="Control" unique_id=366848191 node_paths=PackedStringArray("_text_area", "_name_label", "_text_sfx", "_speed_button", "_auto_button", "_hide_button", "_dialogue_audio", "_choice_container")]
+[node name="DialogueBox" type="Control" unique_id=366848191 node_paths=PackedStringArray("_text_area", "_name_label", "_text_sfx", "_speed_button", "_auto_button", "_hide_button", "_dialogue_audio", "_choice_container", "_skip_button")]
 z_index = 2
 layout_mode = 3
 anchors_preset = 8
@@ -21,6 +21,7 @@ _auto_button = NodePath("Panel/HBoxContainer/AutoButton")
 _hide_button = NodePath("Panel/HBoxContainer/HideButton")
 _dialogue_audio = NodePath("DialogueAudio")
 _choice_container = NodePath("ChoiceContainer")
+_skip_button = NodePath("Panel/HBoxContainer/SkipButton")
 
 [node name="ChoiceContainer" type="VBoxContainer" parent="." unique_id=1288198819]
 visible = false
@@ -83,6 +84,11 @@ text = " Auto "
 layout_mode = 2
 toggle_mode = true
 text = " Hide "
+
+[node name="SkipButton" type="Button" parent="Panel/HBoxContainer" unique_id=343186666]
+layout_mode = 2
+toggle_mode = true
+text = " Skip  "
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1189896500]
 layout_mode = 1

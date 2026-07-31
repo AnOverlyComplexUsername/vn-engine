@@ -5,6 +5,7 @@ func _ready() -> void:
 	var t : VNCharacters = Chars.test_girl.instantiate()
 	self.add_child(t)
 	
+	
 	ScreenManager.change_background(Backgrounds.ice)
 	
 	t.place(%SpawnPoint)

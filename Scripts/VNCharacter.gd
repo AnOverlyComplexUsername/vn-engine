@@ -13,8 +13,6 @@ class_name VNCharacters
 ##A talk sound effect that plays every letter of spoken dialogue
 @export var talkSFX : AudioStream
 
-func _ready() -> void:
-	pass
 
 #region Movement Code
 
@@ -44,3 +42,23 @@ func set_expression(expression_name : String) -> void:
 	var expression : StringName = StringName(expression_name)
 	if expressions.has(expression):
 		sprite.texture = expressions[expression]
+
+#region Sprite transitions
+func fade_out(lengthSeconds : float = 1, _ease : Tween.EaseType = Tween.EaseType.EASE_IN_OUT) -> Signal:
+	self.modulate.a = 1
+	self.show()
+	var tween : Tween = get_tree().create_tween()
+	
+	tween.tween_property(self, "modulate:a", 0, lengthSeconds).set_ease(_ease)
+	
+	return tween.finished
+
+func fade_in(lengthSeconds : float = 1, _ease : Tween.EaseType = Tween.EaseType.EASE_IN_OUT) -> Signal:
+	self.modulate.a = 0
+	self.show()
+	var tween : Tween = get_tree().create_tween()
+	
+	tween.tween_property(self, "modulate:a", 1, lengthSeconds).set_ease(_ease)
+	
+	return tween.finished
+#endregion
