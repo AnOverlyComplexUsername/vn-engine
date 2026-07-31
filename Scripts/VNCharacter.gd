@@ -10,10 +10,10 @@ func _ready() -> void:
 #region Movement Code
 
 ##Moves character sprite to given global position in a given length of time in seconds
-func move(globalPos : Control, lengthSeconds : float = 1) -> Signal:
+func move(globalPos : Control, lengthSeconds : float = 1, _ease : Tween.EaseType = Tween.EaseType.EASE_IN_OUT) -> Signal:
 	var tween : Tween = get_tree().create_tween()
 	
-	tween.tween_property(self, "global_position", globalPos.global_position, lengthSeconds)
+	tween.tween_property(self, "global_position", globalPos.global_position, lengthSeconds).set_ease(_ease)
 	
 	return tween.finished
 	

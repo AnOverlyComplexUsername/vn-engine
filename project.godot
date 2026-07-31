@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 ScreenManager="*uid://cplk6fur6j56a"
 DialogueBox="*uid://cc5ucy03yth"
+CameraController="*uid://bcjfy58dctcee"
 
 [display]
 

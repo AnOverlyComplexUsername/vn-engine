@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cplk6fur6j56a"]
 
-[ext_resource type="Script" uid="uid://bp0ka06ajfvrn" path="res://Scripts/TransitionController.gd" id="1_vndfo"]
+[ext_resource type="Script" uid="uid://bp0ka06ajfvrn" path="res://Scripts/Globals/TransitionController.gd" id="1_vndfo"]
 
 [node name="ScreenManager" type="Control" unique_id=682782503 node_paths=PackedStringArray("_black_screen", "_background")]
 layout_mode = 3
@@ -11,34 +11,38 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_vndfo")
-_black_screen = NodePath("BlackScreen")
+_black_screen = NodePath("CanvasLayer/BlackScreen")
 _background = NodePath("Background")
 
-[node name="BlackScreen" type="ColorRect" parent="." unique_id=2002110937]
+[node name="Background" type="TextureRect" parent="." unique_id=1033043524]
+z_index = -2
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=868848958]
+
+[node name="BlackScreen" type="ColorRect" parent="CanvasLayer" unique_id=2002110937]
 visible = false
 z_index = 2
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
-[node name="Background" type="TextureRect" parent="." unique_id=1033043524]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="CG" type="TextureRect" parent="." unique_id=1820612909]
+[node name="CG" type="TextureRect" parent="CanvasLayer" unique_id=1820612909]
 visible = false
-layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2

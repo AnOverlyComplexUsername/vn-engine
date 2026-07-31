@@ -1,15 +1,17 @@
 [gd_scene format=3 uid="uid://cc5ucy03yth"]
 
-[ext_resource type="Script" uid="uid://wtqahixg26bk" path="res://Scripts/DialogueBox.gd" id="1_aop38"]
+[ext_resource type="Script" uid="uid://wtqahixg26bk" path="res://Scripts/Globals/DialogueBox.gd" id="1_aop38"]
 
-[node name="DialogueBox" type="Control" unique_id=2046858654 node_paths=PackedStringArray("text_area", "name_label", "text_sfx", "speed_button", "auto_button", "hide_button")]
+[node name="DialogueBox" type="Control" unique_id=366848191 node_paths=PackedStringArray("text_area", "name_label", "text_sfx", "speed_button", "auto_button", "hide_button")]
+z_index = 2
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+grow_vertical = 0
 script = ExtResource("1_aop38")
 text_area = NodePath("Panel/MarginContainer/RichTextLabel")
 name_label = NodePath("Panel/PanelContainer/Label")

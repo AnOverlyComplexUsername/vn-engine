@@ -10,6 +10,7 @@ func _ready() -> void:
 	await t.say("hi xdxwefawerfewfefaewfawefawefawefaewfawefawefewfwea")
 	ScreenManager.change_background(Backgrounds.ice)
 	await t.say("bye bye")	
+	await CameraController.move_cam(%SpawnPoint)
 	await t.move(%ExitPoint)
 	
 	await DialogueBox.fade_out()
