@@ -113,6 +113,8 @@ func _check_choices() -> void:
 	else: _choice_container.show()
 #endregion
 
+
+#region Choices System
 ##Set choices that will be displayed at the end of the next sentence 
 ##choice label will match given choices
 func set_choices(...choices : Array) -> void:
@@ -145,6 +147,14 @@ func _chosen_choice(choice_id : String) -> void:
 	_currentChoices = []
 	
 	choice_picked.emit(choice_id)
+#endregion
+
+##plays a given audio; returns a signal upon finished
+func play_audio(audio : AudioStream) -> Signal:
+	_dialogue_audio.stream = audio
+	_dialogue_audio.play()
+	
+	return _dialogue_audio.finished
 
 #region Dialogue box transitions
 func fade_out(lengthSeconds : float = 1) -> Signal:

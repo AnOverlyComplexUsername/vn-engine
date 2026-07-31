@@ -5,6 +5,11 @@ class_name VNCharacters
 ##Name of character
 @export var character_name : StringName = &"ERROR"
 
+@onready var sprite: Sprite2D = $sprite
+
+##a dictionary of sprites to their names
+@export var expressions : Dictionary[StringName, Texture]
+
 ##A talk sound effect that plays every letter of spoken dialogue
 @export var talkSFX : AudioStream
 
@@ -34,5 +39,8 @@ func say(dialogue : String, use_talk_sfx : bool = true) -> Signal:
 	
 	return DialogueBox.line_finished
 
-func set_sprite() -> void:
-	pass
+##Given a name of a expression, change the character's expression if it exists
+func set_expression(expression_name : String) -> void:
+	var expression : StringName = StringName(expression_name)
+	if expressions.has(expression):
+		sprite.texture = expressions[expression]

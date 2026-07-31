@@ -2,36 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bxvq4ortakxkd" path="res://Scripts/VNCharacter.gd" id="1_4d572"]
 [ext_resource type="Texture2D" uid="uid://ldhghwkfvta3" path="res://Sprites/Sprite Starter Pack - Female Dark Hair/sprite female dark hair Ang01.png" id="1_ku25o"]
-[ext_resource type="Texture2D" uid="uid://bqs4uq1cyclhn" path="res://Sprites/Sprite Starter Pack - Female Dark Hair/sprite female dark hair Ann01.png" id="2_4d572"]
-[ext_resource type="Texture2D" uid="uid://cqr7b7i6exds4" path="res://Sprites/Sprite Starter Pack - Female Dark Hair/sprite female dark hair Ann02.png" id="3_pwcty"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_s1fef"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_ku25o")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_4d572")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_pwcty")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
-
-[node name="TestCharacter" type="Control" unique_id=1944589460]
+[node name="TestCharacter" type="Control" unique_id=762486959]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 mouse_filter = 2
 script = ExtResource("1_4d572")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=422326977]
-scale = Vector2(0.41230768, 0.41230774)
-sprite_frames = SubResource("SpriteFrames_s1fef")
+[node name="sprite" type="Sprite2D" parent="." unique_id=905651459]
+texture = ExtResource("1_ku25o")
