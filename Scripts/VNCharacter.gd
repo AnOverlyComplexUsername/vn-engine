@@ -2,7 +2,11 @@ extends Control
 
 class_name VNCharacters
 
+##Name of character
 @export var character_name : StringName = &"ERROR"
+
+##A talk sound effect that plays every letter of spoken dialogue
+@export var talkSFX : AudioStream
 
 func _ready() -> void:
 	pass
@@ -24,10 +28,11 @@ func place(globalPos : Control) -> void:
  
 #endregion
 
-func say(dialogue : String) -> Signal:
-	DialogueBox.begin_dialogue_playback(dialogue, self.character_name)
+func say(dialogue : String, use_talk_sfx : bool = true) -> Signal:
+	if use_talk_sfx and talkSFX: DialogueBox.begin_dialogue_playback(dialogue, self.character_name ,talkSFX)
+	else: DialogueBox.begin_dialogue_playback(dialogue, self.character_name)
 	
 	return DialogueBox.line_finished
-	
+
 func set_sprite() -> void:
 	pass

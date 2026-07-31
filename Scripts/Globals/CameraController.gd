@@ -3,7 +3,7 @@ extends Camera2D
 ##Controls camera movement in a scene/set
 
 func _ready() -> void:
-	self.global_position = get_viewport_rect().size / 2
+	set_to_center()
 
 func move_to_center(lengthSeconds : float = 1, _ease : Tween.EaseType = Tween.EaseType.EASE_IN_OUT) -> Signal:
 	var tween : Tween = get_tree().create_tween()
@@ -38,6 +38,11 @@ func animate_zoom(magnification : float, lengthSeconds = 1, _ease : Tween.EaseTy
 ##Sets a zoom to a given magnification, does not animate the zoom
 func set_zoom_level(magnification : float) -> void:
 	self.zoom = Vector2(magnification,magnification)
+
+##Sets position directly to center screen; no movement
+func set_to_center() -> void:
+	self.global_position = get_viewport_rect().size / 2
+
 
 ##Places/teleports a character on a given global position
 func place_cam(globalPos : Control) -> void:

@@ -1,23 +1,31 @@
 extends Control
 
-@export var text_area: RichTextLabel
-@export var name_label: Label
-@export var text_sfx: AudioStreamPlayer
-@export var speed_button: Button
-@export var auto_button: Button
-@export var hide_button: Button
+@export var _text_area: RichTextLabel
+@export var _name_label: Label
+@export var _text_sfx: AudioStreamPlayer
+@export var _speed_button: Button
+@export var _auto_button: Button
+@export var _hide_button: Button
+@export var _dialogue_audio: AudioStreamPlayer
+@export var _choice_container: VBoxContainer
 
 ##speed of dialogue playback
 var speedScale : int = 1 
+
+##If dialogue box should return signal upon dialogue completion
 var auto_mode : bool = false
 
-signal line_finished
+var _currentChoices : Array[ChoiceButton]
 
+signal line_finished
+signal choice_picked(id : String)
+
+#region Default Functions
 func _ready() -> void:
 	#self.hide()
-	speed_button.pressed.connect(next_switch_speed)
-	auto_button.pressed.connect(toggle_auto)
-	hide_button.pressed.connect(hide_dialogue_ui)
+	_speed_button.pressed.connect(next_switch_speed)
+	_auto_button.pressed.connect(toggle_auto)
+	_hide_button.pressed.connect(hide_dialogue_ui)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel") and self.visible == false:
@@ -27,19 +35,30 @@ func _input(event: InputEvent) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel") and text_area.text != "" and self.visible:
-		if text_area.visible_characters != -1: text_area.visible_characters = -1
-		elif text_area.visible_characters == -1: line_finished.emit()
-			
+	if event.is_action_pressed("ui_cancel") and _text_area.text != "" and self.visible:
+		##If text not done playing; fully complete
+		if _text_area.visible_characters != -1: _text_area.visible_characters = -1
+		
+		##If text done playing, emit finished
+		elif _text_area.visible_characters == -1: _check_choices()
+
+#endregion
+
+
+#region Setters
+
 func set_name_label(char_name : StringName) -> void:
-	name_label.text = char_name
+	_name_label.text = char_name
 
 func set_text(line : String) -> void:
-	text_area.text = line
-	
+	_text_area.text = line
+#endregion
+
+
+#region Button Functionality
 ##toggles auto mode or not; auto mode will automatically go to the next input after dialogue is played back
 func toggle_auto() -> void:
-	auto_mode = auto_button.button_pressed
+	auto_mode = _auto_button.button_pressed
 
 func hide_dialogue_ui() -> void:
 	switch_playback_speed(0)
@@ -49,30 +68,37 @@ func hide_dialogue_ui() -> void:
 func next_switch_speed() -> void:
 	speedScale = wrapi(speedScale + 1,1,4)
 	switch_playback_speed(speedScale)
-	speed_button.text =  "%sx speed" % speedScale
+	_speed_button.text =  "%sx speed" % speedScale
 
 ##Switches playback speed to next setting
 func switch_playback_speed(speed : int) -> void:
 	Engine.time_scale = speed
+#endregion
 
+
+#region Text Area playback
 ##plays text displaying animation 
 func play_text(letter_delay : float = 0.05) -> void:
 	##Base case; if text fully visible, return
-	if text_area.visible_ratio >= 1.0:
-		text_area.visible_characters = -1 
-		if auto_mode: line_finished.emit()
+	if _text_area.visible_ratio >= 1.0:
+		_text_area.visible_characters = -1 
+		if auto_mode: _check_choices()
+		elif not _currentChoices.is_empty(): _choice_container.show()
 		return
 	else:
-		text_area.visible_characters += 1
-		if text_sfx: text_sfx.play()
+		_text_area.visible_characters += 1
+		if _text_sfx and _text_sfx.stream: _text_sfx.play()
 		await get_tree().create_timer(letter_delay,true,true).timeout
 		play_text(letter_delay)
 
 ##Displays and plays dialogue animation 
-func begin_dialogue_playback(dialogue : String, char_name : StringName) -> void:
+func begin_dialogue_playback(dialogue : String, char_name : StringName, sfx : AudioStream = null) -> void:
 	set_text(dialogue)
 	set_name_label(char_name)
-	text_area.visible_ratio = -1
+	if sfx: _text_sfx.stream = sfx
+	else: _text_sfx.stream = null
+		
+	_text_area.visible_ratio = -1
 	
 	if not self.visible:
 		await fade_in()
@@ -80,7 +106,47 @@ func begin_dialogue_playback(dialogue : String, char_name : StringName) -> void:
 	
 	play_text()
 
+##Checks if there are choices at the end of a sentence
+func _check_choices() -> void:
+	if _currentChoices.is_empty():
+		line_finished.emit()
+	else: _choice_container.show()
+#endregion
 
+##Set choices that will be displayed at the end of the next sentence 
+##choice label will match given choices
+func set_choices(...choices : Array) -> void:
+	##reset choices for next set of choices
+	_currentChoices = []
+	
+	for choice in choices:
+		assert(choice is String) ##validate input
+		var newButton : ChoiceButton = ChoiceButton.new(choice)
+		_currentChoices.append(newButton)
+		newButton.choice_id.connect(_chosen_choice)
+		_choice_container.add_child(newButton)
+
+##Set choices that will be displayed at the end of the next sentence 
+##Choices will match an "choice_name" : choice_id pattern dictionary
+func set_secret_choices(choices : Dictionary[String,String]) -> void:
+	##reset choices for next set of choices
+	_currentChoices = []
+	
+	for choice in choices:
+		var newButton : ChoiceButton = ChoiceButton.new(choices[choice],choice)
+		_currentChoices.append(newButton)
+		newButton.choice_id.connect(_chosen_choice)
+		_choice_container.add_child(newButton)
+
+func _chosen_choice(choice_id : String) -> void:
+	_choice_container.hide()
+	for c in _choice_container.get_children():
+		c.queue_free()
+	_currentChoices = []
+	
+	choice_picked.emit(choice_id)
+
+#region Dialogue box transitions
 func fade_out(lengthSeconds : float = 1) -> Signal:
 	self.modulate.a = 1
 	self.show()
@@ -98,3 +164,4 @@ func fade_in(lengthSeconds : float = 1) -> Signal:
 	tween.tween_property(self, "modulate:a", 1, lengthSeconds)
 	
 	return tween.finished
+#endregion

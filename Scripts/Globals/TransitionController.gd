@@ -37,7 +37,7 @@ func fade_in(lengthSeconds : float = 1, fadeColor : Color = Color.BLACK, _ease :
 func fade_to_black_background_change(bg : Texture, lengthSeconds : float = 1, fadeColor : Color = Color.BLACK, _ease : Tween.EaseType = Tween.EaseType.EASE_IN_OUT) -> Signal:
 	await ScreenManager.fade_out(lengthSeconds,fadeColor,_ease)
 	ScreenManager.change_background(bg )
-	return ScreenManager.fade_in(lengthSeconds)
+	return ScreenManager.fade_in(lengthSeconds,fadeColor,_ease)
 
 func change_background(bg : Texture) -> void:
 	_background.texture = bg
