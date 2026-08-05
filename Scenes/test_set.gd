@@ -1,5 +1,11 @@
 extends SetScript
 
+##Demo of how a scene could be handled in engine; scenes should extent set script 
+
+##Test SFX
+const WEIRD_ROUTE_JINGLE = preload("uid://dgtxb7w3o3aaw")
+
+
 
 func _ready() -> void:
 	var t : VNCharacters = Chars.test_girl.instantiate()
@@ -16,6 +22,10 @@ func _ready() -> void:
 	var answer : String = await DialogueBox.choice_picked
 	
 	if answer == "hi": 
+		
+		##can await SFX until it is finished before moving on 
+		await play_audio(WEIRD_ROUTE_JINGLE)
+		
 		await t.say("no")
 		
 		var choices : Dictionary[String,String] = {

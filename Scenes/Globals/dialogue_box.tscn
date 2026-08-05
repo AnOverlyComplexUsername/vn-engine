@@ -15,7 +15,7 @@ grow_vertical = 2
 script = ExtResource("1_aop38")
 _text_area = NodePath("Panel/MarginContainer/RichTextLabel")
 _name_label = NodePath("Panel/PanelContainer/Label")
-_text_sfx = NodePath("textSFX")
+_text_sfx = NodePath("text_sfx")
 _speed_button = NodePath("Panel/HBoxContainer/SpeedButton")
 _auto_button = NodePath("Panel/HBoxContainer/AutoButton")
 _hide_button = NodePath("Panel/HBoxContainer/HideButton")
@@ -120,4 +120,4 @@ vertical_alignment = 1
 
 [node name="DialogueAudio" type="AudioStreamPlayer" parent="." unique_id=208440061]
 
-[node name="textSFX" type="AudioStreamPlayer" parent="." unique_id=1453815103]
+[node name="text_sfx" type="AudioStreamPlayer" parent="." unique_id=1675258265]
