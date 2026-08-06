@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bly0xkguh7gqf"]
+
+[ext_resource type="Script" uid="uid://cwcb1eltj4qwe" path="res://Scenes/Globals/history_text_holder.gd" id="1_6ycdn"]
+
+[node name="HistoryText" type="PanelContainer" unique_id=1088341179 node_paths=PackedStringArray("name_label", "text_area")]
+custom_minimum_size = Vector2(0, 100)
+offset_right = 561.0
+offset_bottom = 174.0
+script = ExtResource("1_6ycdn")
+name_label = NodePath("MarginContainer/VBoxContainer/NameLabel")
+text_area = NodePath("MarginContainer/VBoxContainer/TextArea")
+metadata/_custom_type_script = "uid://cwcb1eltj4qwe"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1844630067]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2116748631]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2068900073]
+layout_mode = 2
+text = "NAME"
+
+[node name="TextArea" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=918856241]
+layout_mode = 2
+text = "AWEFEWFWFEWFEAWIFAWEFEWFWFEWFEAWIFAWEFEWFWFEWFEAWIFAWEFEWFWFEWFEAWIFAWEFEWFWFEWFEAWIFAWEFEWFWFEWFEAWIFAWEFEWFWFEWFEAWIFAWEFEWFWFEWFEAWIFAWEFEWFWFEWFEAWIFAWEFEWFWFEWFEAWIFasdsadasdsa"
+fit_content = true
+autowrap_mode = 1

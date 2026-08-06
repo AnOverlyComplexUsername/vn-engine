@@ -9,6 +9,11 @@ extends Control
 @export var _dialogue_audio: AudioStreamPlayer
 @export var _choice_container: VBoxContainer
 @export var _skip_button: Button
+@export var _history_button: Button
+@export var _history_v_box: VBoxContainer
+
+@export var _history: Control 
+@export var _history_close_button: Button 
 
 ##speed of dialogue playback
 var speedScale : int = 1 
@@ -28,6 +33,8 @@ func _enter_tree() -> void:
 	_auto_button.pressed.connect(toggle_auto)
 	_hide_button.pressed.connect(hide_dialogue_ui)
 	_skip_button.pressed.connect(skip_scene.emit)
+	_history_button.pressed.connect(_history.show)
+	_history_close_button.pressed.connect(_history.hide)
 	
 
 func _input(event: InputEvent) -> void:
@@ -106,7 +113,7 @@ func begin_dialogue_playback(dialogue : String, char_name : StringName, sfx : Au
 	if not self.visible:
 		await fade_in()
 
-	
+	_new_history_box()
 	play_text()
 
 ##Checks if there are choices at the end of a sentence
@@ -178,3 +185,7 @@ func fade_in(lengthSeconds : float = 1, _ease : Tween.EaseType = Tween.EaseType.
 	
 	return tween.finished
 #endregion
+
+func _new_history_box() -> void:
+	_history_v_box.add_child(HistoryTextHolder.new_history_text(_name_label.text,_text_area.text))
+	
