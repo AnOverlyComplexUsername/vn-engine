@@ -9,13 +9,14 @@ const WEIRD_ROUTE_JINGLE = preload("uid://dgtxb7w3o3aaw")
 
 func _ready() -> void:
 	var t : VNCharacters = Chars.test_girl.instantiate()
-	self.add_child(t)
+	self.add_child(t) ##TODO: Maybe make a function for intiating 
 	
 	
 	ScreenManager.change_background(Backgrounds.ice)
 	
 	t.place(%SpawnPoint)
 	
+	##Sets the choice buttons to the given parameters
 	DialogueBox.set_choices("hi", "bye")
 	t.say("hi xdxwefawerfewfefaewfawefawefawefaewfawefawefewfwea")
 	
