@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://lebvkwoti75w"]
 
 [ext_resource type="Script" uid="uid://bxvq4ortakxkd" path="res://Scripts/VNCharacter.gd" id="1_4d572"]
-[ext_resource type="Texture2D" uid="uid://ldhghwkfvta3" path="res://Sprites/Sprite Starter Pack - Female Dark Hair/sprite female dark hair Ang01.png" id="1_ku25o"]
+[ext_resource type="Texture2D" uid="uid://ldhghwkfvta3" path="res://Assests/Sprite Starter Pack - Female Dark Hair/sprite female dark hair Ang01.png" id="1_ku25o"]
 
 [node name="TestCharacter" type="Control" unique_id=762486959]
 layout_mode = 3

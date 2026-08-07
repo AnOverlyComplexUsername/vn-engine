@@ -14,7 +14,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[node name="DialogueBox" type="Control" unique_id=366848191 node_paths=PackedStringArray("_text_area", "_name_label", "_text_sfx", "_speed_button", "_auto_button", "_hide_button", "_dialogue_audio", "_choice_container", "_skip_button", "_history_button", "_history_v_box", "_history", "_history_close_button")]
+[node name="DialogueBox" type="Control" unique_id=366848191 node_paths=PackedStringArray("_text_area", "_name_label", "_text_sfx", "_speed_button", "_auto_button", "_hide_button", "_voice_line", "_choice_container", "_skip_button", "_history_button", "_history_v_box", "_history", "_history_close_button", "_container", "_replayed_voice_line")]
 z_index = 2
 layout_mode = 3
 anchors_preset = 8
@@ -25,21 +25,31 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_aop38")
-_text_area = NodePath("TextContainer/MarginContainer/RichTextLabel")
-_name_label = NodePath("TextContainer/PanelContainer/Label")
+_text_area = NodePath("DialogueCanvasLayer/Container/TextContainer/MarginContainer/RichTextLabel")
+_name_label = NodePath("DialogueCanvasLayer/Container/TextContainer/PanelContainer/Label")
 _text_sfx = NodePath("text_sfx")
-_speed_button = NodePath("TextContainer/HBoxContainer/SpeedButton")
-_auto_button = NodePath("TextContainer/HBoxContainer/AutoButton")
-_hide_button = NodePath("TextContainer/HBoxContainer/HideButton")
-_dialogue_audio = NodePath("DialogueAudio")
-_choice_container = NodePath("ChoiceContainer")
-_skip_button = NodePath("TextContainer/HBoxContainer/SkipButton")
-_history_button = NodePath("TextContainer/HBoxContainer/HistoryButton")
-_history_v_box = NodePath("History/HistoryContainer/MarginContainer/ScrollContainer/HistoryVBox")
-_history = NodePath("History")
-_history_close_button = NodePath("History/HistoryCloseButton")
+_speed_button = NodePath("DialogueCanvasLayer/Container/TextContainer/HBoxContainer/SpeedButton")
+_auto_button = NodePath("DialogueCanvasLayer/Container/TextContainer/HBoxContainer/AutoButton")
+_hide_button = NodePath("DialogueCanvasLayer/Container/TextContainer/HBoxContainer/HideButton")
+_voice_line = NodePath("voice_line")
+_choice_container = NodePath("DialogueCanvasLayer/Container/ChoiceContainer")
+_skip_button = NodePath("DialogueCanvasLayer/Container/TextContainer/HBoxContainer/SkipButton")
+_history_button = NodePath("DialogueCanvasLayer/Container/TextContainer/HBoxContainer/HistoryButton")
+_history_v_box = NodePath("DialogueCanvasLayer/Container/History/HistoryContainer/MarginContainer/ScrollContainer/HistoryVBox")
+_history = NodePath("DialogueCanvasLayer/Container/History")
+_history_close_button = NodePath("DialogueCanvasLayer/Container/History/HistoryCloseButton")
+_container = NodePath("DialogueCanvasLayer/Container")
+_replayed_voice_line = NodePath("replayed_voice_line")
 
-[node name="ChoiceContainer" type="VBoxContainer" parent="." unique_id=1288198819]
+[node name="DialogueCanvasLayer" type="CanvasLayer" parent="." unique_id=1996417468]
+
+[node name="Container" type="Control" parent="DialogueCanvasLayer" unique_id=117516687]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ChoiceContainer" type="VBoxContainer" parent="DialogueCanvasLayer/Container" unique_id=1288198819]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -47,37 +57,37 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -86.0
-offset_top = -307.0
-offset_right = 86.0
-offset_bottom = 125.0
+offset_left = 470.0
+offset_top = -3.0
+offset_right = 642.0
+offset_bottom = 429.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 alignment = 1
 
-[node name="Button" type="Button" parent="ChoiceContainer" unique_id=774610439]
+[node name="Button" type="Button" parent="DialogueCanvasLayer/Container/ChoiceContainer" unique_id=774610439]
 visible = false
 layout_mode = 2
 
-[node name="TextContainer" type="Panel" parent="." unique_id=387415675]
+[node name="TextContainer" type="Panel" parent="DialogueCanvasLayer/Container" unique_id=387415675]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -264.5
-offset_top = 112.0
-offset_right = 264.5
-offset_bottom = 254.0
+offset_left = 291.5
+offset_top = 396.0
+offset_right = 820.5
+offset_bottom = 538.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TextContainer" unique_id=1201470975]
+[node name="HBoxContainer" type="HBoxContainer" parent="DialogueCanvasLayer/Container/TextContainer" unique_id=1201470975]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -89,31 +99,31 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 11
 
-[node name="SpeedButton" type="Button" parent="TextContainer/HBoxContainer" unique_id=2044205134]
+[node name="SpeedButton" type="Button" parent="DialogueCanvasLayer/Container/TextContainer/HBoxContainer" unique_id=2044205134]
 layout_mode = 2
 text = "1x speed"
 
-[node name="AutoButton" type="Button" parent="TextContainer/HBoxContainer" unique_id=1314459813]
+[node name="AutoButton" type="Button" parent="DialogueCanvasLayer/Container/TextContainer/HBoxContainer" unique_id=1314459813]
 layout_mode = 2
 toggle_mode = true
 text = " Auto "
 
-[node name="HideButton" type="Button" parent="TextContainer/HBoxContainer" unique_id=1702775095]
+[node name="HideButton" type="Button" parent="DialogueCanvasLayer/Container/TextContainer/HBoxContainer" unique_id=1702775095]
 layout_mode = 2
 toggle_mode = true
 text = " Hide "
 
-[node name="SkipButton" type="Button" parent="TextContainer/HBoxContainer" unique_id=343186666]
+[node name="SkipButton" type="Button" parent="DialogueCanvasLayer/Container/TextContainer/HBoxContainer" unique_id=343186666]
 layout_mode = 2
 toggle_mode = true
 text = " Skip  "
 
-[node name="HistoryButton" type="Button" parent="TextContainer/HBoxContainer" unique_id=1139829977]
+[node name="HistoryButton" type="Button" parent="DialogueCanvasLayer/Container/TextContainer/HBoxContainer" unique_id=1139829977]
 layout_mode = 2
 toggle_mode = true
 text = " History  "
 
-[node name="MarginContainer" type="MarginContainer" parent="TextContainer" unique_id=1189896500]
+[node name="MarginContainer" type="MarginContainer" parent="DialogueCanvasLayer/Container/TextContainer" unique_id=1189896500]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -126,29 +136,31 @@ theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 metadata/_edit_lock_ = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TextContainer/MarginContainer" unique_id=455963418]
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogueCanvasLayer/Container/TextContainer/MarginContainer" unique_id=455963418]
 layout_mode = 2
 bbcode_enabled = true
 
-[node name="PanelContainer" type="PanelContainer" parent="TextContainer" unique_id=1259567978]
+[node name="PanelContainer" type="PanelContainer" parent="DialogueCanvasLayer/Container/TextContainer" unique_id=1259567978]
 layout_mode = 0
 offset_top = -39.0
 offset_right = 75.5
 offset_bottom = 1.0
 
-[node name="Label" type="Label" parent="TextContainer/PanelContainer" unique_id=4191953]
+[node name="Label" type="Label" parent="DialogueCanvasLayer/Container/TextContainer/PanelContainer" unique_id=4191953]
 layout_mode = 2
 text = "Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="History" type="Control" parent="." unique_id=287187459]
+[node name="History" type="Control" parent="DialogueCanvasLayer/Container" unique_id=287187459]
 visible = false
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 576.0
+offset_top = 324.0
+offset_right = 616.0
+offset_bottom = 364.0
 
-[node name="HistoryCloseButton" type="Button" parent="History" unique_id=1895819406]
+[node name="HistoryCloseButton" type="Button" parent="DialogueCanvasLayer/Container/History" unique_id=1895819406]
 layout_mode = 0
 offset_left = -343.0
 offset_top = -321.0
@@ -156,7 +168,7 @@ offset_right = -314.0
 offset_bottom = -290.0
 text = "X"
 
-[node name="HistoryContainer" type="PanelContainer" parent="History" unique_id=1186526310]
+[node name="HistoryContainer" type="PanelContainer" parent="DialogueCanvasLayer/Container/History" unique_id=1186526310]
 self_modulate = Color(1, 1, 1, 0.27058825)
 layout_mode = 1
 anchors_preset = 8
@@ -173,21 +185,23 @@ grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_aop38")
 
-[node name="MarginContainer" type="MarginContainer" parent="History/HistoryContainer" unique_id=1079688242]
+[node name="MarginContainer" type="MarginContainer" parent="DialogueCanvasLayer/Container/History/HistoryContainer" unique_id=1079688242]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="ScrollContainer" type="ScrollContainer" parent="History/HistoryContainer/MarginContainer" unique_id=2037528883]
+[node name="ScrollContainer" type="ScrollContainer" parent="DialogueCanvasLayer/Container/History/HistoryContainer/MarginContainer" unique_id=2037528883]
 layout_mode = 2
 
-[node name="HistoryVBox" type="VBoxContainer" parent="History/HistoryContainer/MarginContainer/ScrollContainer" unique_id=1669936496]
+[node name="HistoryVBox" type="VBoxContainer" parent="DialogueCanvasLayer/Container/History/HistoryContainer/MarginContainer/ScrollContainer" unique_id=1669936496]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="DialogueAudio" type="AudioStreamPlayer" parent="." unique_id=208440061]
+[node name="voice_line" type="AudioStreamPlayer" parent="." unique_id=208440061]
+
+[node name="replayed_voice_line" type="AudioStreamPlayer" parent="." unique_id=47952681]
 
 [node name="text_sfx" type="AudioStreamPlayer" parent="." unique_id=1675258265]

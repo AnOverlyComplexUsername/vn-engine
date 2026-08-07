@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqs4uq1cyclhn"
-path="res://.godot/imported/sprite female dark hair Ann01.png-6c072702dc1bf1017eef02f9a49146a6.ctex"
+uid="uid://b5jrsy1kng8pr"
+path="res://.godot/imported/ghost_remix_desktop.png-22d45bae47c356f8bc1dd50d2eafed12.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Sprite Starter Pack - Female Dark Hair/sprite female dark hair Ann01.png"
-dest_files=["res://.godot/imported/sprite female dark hair Ann01.png-6c072702dc1bf1017eef02f9a49146a6.ctex"]
+source_file="res://Assests/BG/ghost_remix_desktop.png"
+dest_files=["res://.godot/imported/ghost_remix_desktop.png-22d45bae47c356f8bc1dd50d2eafed12.ctex"]
 
 [params]
 

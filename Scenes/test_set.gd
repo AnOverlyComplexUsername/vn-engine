@@ -4,6 +4,7 @@ extends SetScript
 
 ##Test SFX
 const WEIRD_ROUTE_JINGLE = preload("uid://dgtxb7w3o3aaw")
+const EVIL_BOO = preload("uid://cosbay64uj72x")
 
 
 
@@ -18,7 +19,8 @@ func _ready() -> void:
 	
 	##Sets the choice buttons to the given parameters
 	DialogueBox.set_choices("hi", "bye")
-	t.say("hi xdxwefawerfewfefaewfawefawefawefaewfawefawefewfwea")
+	DialogueBox.play_voice_line(EVIL_BOO)
+	await t.say("Boo! Did I scare you?")
 	
 	var answer : String = await DialogueBox.choice_picked
 	

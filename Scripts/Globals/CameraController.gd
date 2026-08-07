@@ -5,33 +5,33 @@ extends Camera2D
 func _ready() -> void:
 	set_to_center()
 
-func move_to_center(lengthSeconds : float = 1, _ease : Tween.EaseType = Tween.EaseType.EASE_IN_OUT) -> Signal:
-	var tween : Tween = get_tree().create_tween()
+func move_to_center(lengthSeconds : float = 1,  _tween : Tween = null) -> Signal:
+	var tween : Tween = _tween if _tween else get_tree().create_tween()
 	
-	tween.tween_property(self, "global_position",get_viewport_rect().size / 2, lengthSeconds).set_ease(_ease)
+	tween.tween_property(self, "global_position",get_viewport_rect().size / 2, lengthSeconds) 
 	
 	return tween.finished
 	
-func move_cam(globalPos : Control, lengthSeconds : float = 1, _ease : Tween.EaseType = Tween.EaseType.EASE_IN_OUT) -> Signal:
-	var tween : Tween = get_tree().create_tween()
+func move_cam(globalPos : Control, lengthSeconds : float = 1,  _tween : Tween = null) -> Signal:
+	var tween : Tween = _tween if _tween else get_tree().create_tween()
 	
-	tween.tween_property(self, "global_position", globalPos.global_position, lengthSeconds).set_ease(_ease)
+	tween.tween_property(self, "global_position", globalPos.global_position, lengthSeconds) 
 	
 	return tween.finished
 
-func animate_move_zoom_cam(globalPos : Control, magnification : float, lengthSeconds = 1, _ease : Tween.EaseType = Tween.EaseType.EASE_IN_OUT) -> Signal:
-	var tween : Tween = get_tree().create_tween()
+func animate_move_zoom_cam(globalPos : Control, magnification : float, lengthSeconds = 1,  _tween : Tween = null) -> Signal:
+	var tween : Tween = _tween if _tween else get_tree().create_tween()
 	
-	tween.tween_property(self, "zoom", Vector2(magnification,magnification), lengthSeconds).set_ease(_ease)
-	tween.parallel().tween_property(self, "global_position", globalPos.global_position, lengthSeconds).set_ease(_ease)
+	tween.tween_property(self, "zoom", Vector2(magnification,magnification), lengthSeconds) 
+	tween.parallel().tween_property(self, "global_position", globalPos.global_position, lengthSeconds) 
 	
 	return tween.finished
 
 ##does a gradual zoom instead of a hard cut zoom 
-func animate_zoom(magnification : float, lengthSeconds = 1, _ease : Tween.EaseType = Tween.EaseType.EASE_IN_OUT) -> Signal:
-	var tween : Tween = get_tree().create_tween()
+func animate_zoom(magnification : float, lengthSeconds = 1,  _tween : Tween = null) -> Signal:
+	var tween : Tween = _tween if _tween else get_tree().create_tween()
 	
-	tween.tween_property(self, "zoom", Vector2(magnification,magnification), lengthSeconds).set_ease(_ease)
+	tween.tween_property(self, "zoom", Vector2(magnification,magnification), lengthSeconds) 
 
 	return tween.finished
 

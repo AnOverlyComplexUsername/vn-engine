@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1gqisimkemuo"
-path="res://.godot/imported/sprite female dark hair Sad02.png-a31cd9bd3ac715fe7e4ef020dc37cf9c.ctex"
+uid="uid://ldhghwkfvta3"
+path="res://.godot/imported/sprite female dark hair Ang01.png-4e3348d36dc7f6ad40d4d518bb162286.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Sprite Starter Pack - Female Dark Hair/sprite female dark hair Sad02.png"
-dest_files=["res://.godot/imported/sprite female dark hair Sad02.png-a31cd9bd3ac715fe7e4ef020dc37cf9c.ctex"]
+source_file="res://Assests/Sprite Starter Pack - Female Dark Hair/sprite female dark hair Ang01.png"
+dest_files=["res://.godot/imported/sprite female dark hair Ang01.png-4e3348d36dc7f6ad40d4d518bb162286.ctex"]
 
 [params]
 
