@@ -35,7 +35,7 @@ func place(globalPos : Control) -> void:
 ##calls the DialogueBox to display given dialogue [br]
 ##use [param letter_delay] to specify the delay between when each letter is displayed in dialogue [br]
 ##if character has a set sfx for talking, use [param use_talk_sfx] to enable/disable its usage
-func say(dialogue : String, use_talk_sfx : bool = true, letter_delay : float = 0.05) -> Signal:
+func say(dialogue : String, use_talk_sfx : bool = true, letter_delay : float = Global.letter_delay) -> Signal:
 	if use_talk_sfx and talkSFX: DialogueBox.begin_dialogue_playback(dialogue, self.character_name ,talkSFX,letter_delay)
 	else: DialogueBox.begin_dialogue_playback(dialogue, self.character_name,null,letter_delay)
 	

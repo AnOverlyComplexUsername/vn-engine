@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 ScreenManager="*uid://cplk6fur6j56a"
 DialogueBox="*uid://cc5ucy03yth"
 CameraController="*uid://bcjfy58dctcee"
+Global="*uid://in5m8fauomh4"
 
 [display]
 

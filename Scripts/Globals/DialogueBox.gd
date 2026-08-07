@@ -105,7 +105,7 @@ func switch_playback_speed(speed : int) -> void:
 
 #region Text Area playback
 ##plays text displaying animation 
-func _play_text(letter_delay : float = 0.05) -> void:
+func _play_text(letter_delay : float = Global.letter_delay) -> void:
 	##Base case; if text fully visible, return
 	if _text_area.visible_ratio >= 1.0:
 		_text_area.visible_characters = -1 
@@ -119,7 +119,7 @@ func _play_text(letter_delay : float = 0.05) -> void:
 		_play_text(letter_delay)
 
 ##Displays and plays dialogue animation 
-func begin_dialogue_playback(dialogue : String, char_name : StringName, sfx : AudioStream = null, letter_delay : float = 0.05) -> void:
+func begin_dialogue_playback(dialogue : String, char_name : StringName, sfx : AudioStream = null, letter_delay : float = Global.letter_delay) -> void:
 	set_text(dialogue)
 	set_name_label(char_name)
 	##Hardcoded to avoid voice lines carrying over when creating new history entries 
