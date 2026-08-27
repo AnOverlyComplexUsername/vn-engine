@@ -15,7 +15,10 @@ func _ready() -> void:
 	
 	ScreenManager.change_background(Backgrounds.ice)
 	
+	t.say("")
 	t.place(%SpawnPoint)
+	DialogueBox.fade_in()
+	await t.fade_in()
 	
 	##Sets the choice buttons to the given parameters
 	DialogueBox.set_choices("hi", "bye")
