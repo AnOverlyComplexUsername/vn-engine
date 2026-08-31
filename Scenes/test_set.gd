@@ -7,7 +7,6 @@ const WEIRD_ROUTE_JINGLE = preload("uid://dgtxb7w3o3aaw")
 const EVIL_BOO = preload("uid://cosbay64uj72x")
 
 
-
 func _ready() -> void:
 	var t : VNCharacters = Chars.test_girl.instantiate()
 	self.add_child(t) ##TODO: Maybe make a function for intiating 

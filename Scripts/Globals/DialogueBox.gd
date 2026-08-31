@@ -149,6 +149,8 @@ func _check_choices() -> void:
 ##[br]
 ## Usage:
 ## [codeblock]
+##var t : VNCharacters = Chars.test_girl.instantiate()
+##
 ##DialogueBox.set_choices("hi", "bye")
 ##t.say("Hello")
 ##	
@@ -175,6 +177,8 @@ func set_choices(...choices : Array) -> void:
 ##[br]
 ##Usage:
 ## [codeblock]
+##var t : VNCharacters = Chars.test_girl.instantiate()
+##
 ##var choices : Dictionary[String,String] = {
 ##			"hi": "first_option", 
 ##			"bye" : "second_option"
