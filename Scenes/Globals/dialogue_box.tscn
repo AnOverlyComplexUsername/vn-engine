@@ -26,7 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_aop38")
 _text_area = NodePath("DialogueCanvasLayer/Container/TextContainer/MarginContainer/RichTextLabel")
-_name_label = NodePath("DialogueCanvasLayer/Container/TextContainer/PanelContainer/Label")
+_name_label = NodePath("DialogueCanvasLayer/Container/TextContainer/PanelContainer/MarginContainer/Label")
 _text_sfx = NodePath("text_sfx")
 _speed_button = NodePath("DialogueCanvasLayer/Container/TextContainer/HBoxContainer/SpeedButton")
 _auto_button = NodePath("DialogueCanvasLayer/Container/TextContainer/HBoxContainer/AutoButton")
@@ -146,7 +146,12 @@ offset_top = -39.0
 offset_right = 75.5
 offset_bottom = 1.0
 
-[node name="Label" type="Label" parent="DialogueCanvasLayer/Container/TextContainer/PanelContainer" unique_id=4191953]
+[node name="MarginContainer" type="MarginContainer" parent="DialogueCanvasLayer/Container/TextContainer/PanelContainer" unique_id=953423318]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+
+[node name="Label" type="Label" parent="DialogueCanvasLayer/Container/TextContainer/PanelContainer/MarginContainer" unique_id=4191953]
 layout_mode = 2
 text = "Name"
 horizontal_alignment = 1

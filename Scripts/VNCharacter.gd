@@ -3,7 +3,7 @@ extends Control
 class_name VNCharacters
 
 ##Name of character
-@export var character_name : StringName = &"ERROR"
+@export var character_name : StringName = &"MISSING_NAME"
 
 @onready var sprite: Sprite2D = $sprite
 

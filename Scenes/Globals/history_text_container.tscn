@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bly0xkguh7gqf"]
 
-[ext_resource type="Script" uid="uid://cwcb1eltj4qwe" path="res://Scenes/Globals/history_text_holder.gd" id="1_6ycdn"]
+[ext_resource type="Script" uid="uid://cwcb1eltj4qwe" path="res://Scripts/HistoryTextHolder.gd" id="1_6ycdn"]
 
 [node name="HistoryText" type="PanelContainer" unique_id=1088341179 node_paths=PackedStringArray("name_label", "text_area", "audio_line_button")]
 custom_minimum_size = Vector2(0, 100)

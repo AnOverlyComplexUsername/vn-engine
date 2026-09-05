@@ -12,9 +12,10 @@ func _ready() -> void:
 	self.add_child(t) ##TODO: Maybe make a function for intiating 
 	
 	
-	ScreenManager.change_background(Backgrounds.ice)
+	ScreenManager.change_background(Backgrounds.ICE)
 	
-	t.say("")
+	DialogueBox.set_name_label(t.character_name)
+	
 	t.place(%SpawnPoint)
 	DialogueBox.fade_in()
 	await t.fade_in()
@@ -47,5 +48,5 @@ func _ready() -> void:
 		await t.move(%ExitPoint)
 		
 		await DialogueBox.fade_out()
-		await ScreenManager.fade_to_black_background_change(Backgrounds.suisei)
+		await ScreenManager.fade_to_black_background_change(Backgrounds.GODOT_ICON)
 		CameraController.move_to_center()

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bt18661uo6bps"]
 
-[ext_resource type="Script" uid="uid://ci0naea4ob0xp" path="res://Scenes/Globals/history_choice_holder.gd" id="1_xr7mn"]
+[ext_resource type="Script" uid="uid://ci0naea4ob0xp" path="res://Scripts/HistoryChoiceHolder.gd" id="1_xr7mn"]
 
 [node name="HistoryText" type="PanelContainer" unique_id=855648402 node_paths=PackedStringArray("choice_label")]
 offset_right = 561.0

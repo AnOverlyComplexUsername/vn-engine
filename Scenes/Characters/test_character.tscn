@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://lebvkwoti75w"]
 
 [ext_resource type="Script" uid="uid://bxvq4ortakxkd" path="res://Scripts/VNCharacter.gd" id="1_4d572"]
-[ext_resource type="Texture2D" uid="uid://ldhghwkfvta3" path="res://Assests/Sprite Starter Pack - Female Dark Hair/sprite female dark hair Ang01.png" id="1_ku25o"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_1dgi1"]
 
 [node name="TestCharacter" type="Control" unique_id=762486959]
 layout_mode = 3
@@ -10,4 +10,5 @@ mouse_filter = 2
 script = ExtResource("1_4d572")
 
 [node name="sprite" type="Sprite2D" parent="." unique_id=905651459]
-texture = ExtResource("1_ku25o")
+scale = Vector2(2.515625, 2.1875)
+texture = ExtResource("2_1dgi1")

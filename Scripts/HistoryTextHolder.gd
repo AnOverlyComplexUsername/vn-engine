@@ -1,6 +1,7 @@
 extends PanelContainer
 
-##Holds text history 
+##This class holds an instance of dialogue & voice line and is used for dislpaying
+## that data in the history/log panel
 class_name HistoryTextHolder
 
 

@@ -1,6 +1,6 @@
 extends PanelContainer
 
-##Holds text history 
+##Stores the choice chosen by the player into the history/log panel
 class_name HistoryChoiceHolder
 
 
